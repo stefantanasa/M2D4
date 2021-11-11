@@ -12,9 +12,6 @@ let memList = [
   "Daniela",
   "Nic",
 ];
-//shuffle fake list
-let shuffled = memList.sort(() => Math.random() - 0.5);
-console.log(memList);
 
 let addMemberButton = document.getElementById("add-member-button");
 let inputMemberForm = document.getElementById("member-to-add");
@@ -44,14 +41,17 @@ let getTeamNode = document.getElementById("teams-list");
 let numberOfTeams = document.getElementById("input-numbers");
 //how many teams function
 const howManyTeams = function () {
+  //shuffle fake list
+  let shuffledList = addedMemberList.sort(() => Math.random() - 0.5);
+  console.log(shuffledList);
   // splitting the list:
-  let chunk_size = Math.floor(addedMemberList.length / numberOfTeams.value);
+  let chunk_size = Math.floor(shuffledList.length / numberOfTeams.value);
   var tempArray = [];
 
-  for (index = 0; index < addedMemberList.length; index += chunk_size) {
-    myChunk = addedMemberList.slice(
+  for (index = 0; index < shuffledList.length; index += chunk_size) {
+    myChunk = shuffledList.slice(
       index,
-      index + Math.floor(addedMemberList.length / numberOfTeams.value)
+      index + Math.floor(shuffledList.length / numberOfTeams.value)
     );
     // Do something if you want with the group
 
