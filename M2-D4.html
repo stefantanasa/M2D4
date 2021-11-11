@@ -78,6 +78,8 @@
           >
         </div>
         <input
+          id="input-numbers"
+          value="0"
           type="text"
           class="form-control"
           aria-label="Default"
@@ -85,21 +87,24 @@
         />
       </div>
       <!--Submit button-->
-      <input class="btn btn-primary" type="submit" value="Make the teams!" />
+      <input
+        class="btn btn-primary"
+        onclick="howManyTeams()"
+        type="submit"
+        value="Make the teams!"
+      />
       <!--List-->
-      <ul class="list-group">
+      <ul class="list-group" id="teams-list">
         <li class="list-group-item">
           Team 1
           <ul class="list-group list-group-flush">
             <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
           </ul>
         </li>
         <li class="list-group-item">
-          Name 2
+          Team 2
           <ul class="list-group list-group-flush">
             <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
           </ul>
         </li>
       </ul>
