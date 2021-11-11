@@ -45,13 +45,13 @@ let numberOfTeams = document.getElementById("input-numbers");
 //how many teams function
 const howManyTeams = function () {
   // splitting the list:
-  let chunk_size = Math.floor(memList.length / numberOfTeams.value);
+  let chunk_size = Math.floor(addedMemberList.length / numberOfTeams.value);
   var tempArray = [];
 
-  for (index = 0; index < memList.length; index += chunk_size) {
-    myChunk = memList.slice(
+  for (index = 0; index < addedMemberList.length; index += chunk_size) {
+    myChunk = addedMemberList.slice(
       index,
-      index + Math.floor(memList.length / numberOfTeams.value)
+      index + Math.floor(addedMemberList.length / numberOfTeams.value)
     );
     // Do something if you want with the group
 
