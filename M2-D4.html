@@ -16,7 +16,7 @@
     - Every time the user clicks on the "Assign" button,
      a random name is placed in a team and removed from the initial list.
 
-     
+
     - Each team should be inside a "column" to be responsive.
     - [EXTRA] Create a button to remove a user from a team,
      and putting him back in the main list, waiting to be reassigned.
@@ -50,18 +50,25 @@
           >
         </div>
         <input
+          id="member-to-add"
           type="text"
-          class="form-control"
+          class="member-name"
           aria-label="Default"
+          value=""
           aria-describedby="inputGroup-sizing-default"
         />
       </div>
       <!--Add names button-->
-      <input class="btn btn-primary" type="submit" value="Add Team Member" />
+      <input
+        onclick="addMember()"
+        id="add-member-button"
+        class="btn btn-primary"
+        type="submit"
+        value="Add Team Member"
+      />
       <!--List of members added-->
-      <ul class="list-group">
-        <li class="list-group-item">Here will appear the members</li>
-      </ul>
+      <h3>List of Names</h3>
+      <ul class="list-group" id="added-members-to-list"></ul>
 
       <!--How many teams-->
       <div class="input-group mb-3">
@@ -97,7 +104,7 @@
         </li>
       </ul>
     </div>
-
+    <script src="javascript.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
