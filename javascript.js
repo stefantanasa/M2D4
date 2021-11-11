@@ -44,15 +44,42 @@ let getTeamNode = document.getElementById("teams-list");
 let numberOfTeams = document.getElementById("input-numbers");
 //how many teams function
 const howManyTeams = function () {
-  for (i = 0; i < numberOfTeams.value; i++) {
-    let newTeam = document.createElement("li");
-    newTeam.innerText = `Team ${i + 1}`;
-    newTeam.className = "list-group-item";
-    getTeamNode.appendChild(newTeam);
+  // splitting the list:
+  let chunk_size = Math.floor(memList.length / numberOfTeams.value);
+  var tempArray = [];
+
+  for (index = 0; index < memList.length; index += chunk_size) {
+    myChunk = memList.slice(
+      index,
+      index + Math.floor(memList.length / numberOfTeams.value)
+    );
+    // Do something if you want with the group
+
+    tempArray.push(myChunk);
   }
 
+  // ul in the dom to be created:
+  for (i = 0; i < numberOfTeams.value; i++) {
+    let newTeam = document.createElement("ul");
+    newTeam.innerText = `Team ${i + 1}`;
+    newTeam.className = `list-group-item ${i}`;
+    getTeamNode.appendChild(newTeam);
+  }
   numberOfTeams.value = "";
-  console.log();
+  let node = document.getElementsByClassName("list-group-item 0");
+  console.log(`is a node: ${node[0]}`);
+
+  for (i = 0; i < tempArray.length; i++) {
+    console.log(tempArray[i]);
+    let node = document.getElementsByClassName(`list-group-item ${i}`);
+    for (x = 0; x < tempArray[i].length; x++) {
+      console.log(tempArray[i][x]);
+      let mem = document.createElement("li");
+      mem.innerText = tempArray[i][x];
+      mem.className = "list-group-item";
+      node[0].appendChild(mem);
+    }
+  }
 
   ////so far so good :)
   for (i = 0; i < addedMemberList.length; i++) {
@@ -62,24 +89,23 @@ const howManyTeams = function () {
   }
 };
 // let obj = {};
-let chunk_size = 2;
-var index = 0;
-var arrayLength = memList.length;
-var tempArray = [];
 
-for (index = 0; index < arrayLength; index += chunk_size) {
-  myChunk = memList.slice(index, index + chunk_size);
-  // Do something if you want with the group
-  tempArray.push(myChunk);
-}
+// let chunk_size = 2;
+// var index = 0;
+// var arrayLength = memList.length;
+// var tempArray = [];
 
-console.log(tempArray);
+// for (index = 0; index < arrayLength; index += chunk_size) {
+//   myChunk = memList.slice(index, index + chunk_size);
+//   // Do something if you want with the group
+//   tempArray.push(myChunk);
+// }
 
-for (i = 0; i < tempArray.length; i++) {
-  let oneElement = document.createElement("li");
-  oneElement.innerText = `This is ${tempArray[i]}`;
-  getCreateMemberListNode.appendChild(oneElement);
-}
+// for (i = 0; i < tempArray.length; i++) {
+//   let oneElement = document.createElement("li");
+//   oneElement.innerText = `This is ${tempArray[i]}`;
+//   getCreateMemberListNode.appendChild(oneElement);
+// }
 
 /*
  * Returns an array with arrays of the given size.
@@ -87,6 +113,7 @@ for (i = 0; i < tempArray.length; i++) {
  * @param myArray {Array} array to split
  * @param chunk_size {Integer} Size of every group
  
+
 
 
 
